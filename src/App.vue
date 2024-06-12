@@ -1,7 +1,7 @@
 <script>
 import { actions } from './store';
 
-import Card from 'components/card';
+import Card from 'components/card'; // 这个跟 golang 是反着的
 import List from 'components/list';
 import Text from 'components/text';
 import Message from 'components/message';
@@ -12,7 +12,7 @@ export default {
         actions: actions
     },
     created () {
-        this.initData();
+        this.initData(); // 这个在 html初始化被调用
     }
 }
 </script>
@@ -32,11 +32,11 @@ export default {
 
 <style lang="less" scoped>
 #app {
-    margin: 20px auto;
+    margin: 20px auto; /* 居中 */
     width: 800px;
     height: 600px;
 
-    overflow: hidden;
+    overflow: hidden; /* 溢出隐藏 */
     border-radius: 3px;
 
     .sidebar, .main {
@@ -60,7 +60,7 @@ export default {
         left: 0;
     }
     .message {
-        height: ~'calc(100% - 160px)';
+        height: ~'calc(100% - 160px)'; /* 减去输入框和消息列表的高度 */
     }
 }
 </style>

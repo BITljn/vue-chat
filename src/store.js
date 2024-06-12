@@ -76,7 +76,7 @@ const store = new Vuex.Store({
 
 store.watch(
     (state) => state.sessions,
-    (val) => {
+    (val) => { // 剪头函数，写本地存储
         console.log('CHANGE: ', val);
         localStorage.setItem('vue-chat-session', JSON.stringify(val));
     },
@@ -85,9 +85,19 @@ store.watch(
     }
 );
 
+/*
+这段JavaScript代码是一个ES6模块，它导出了一个名为store的默认值和一个名为actions的对象。
+actions对象包含四个函数，每个函数都是一个action creator，用于生成要发送到Redux store的actions。
+这些函数接收一个包含dispatch方法的对象作为参数，这个对象通常是一个Redux的context。每个函数根据需要调用dispatch方法，并传递不同的action类型和payload。
+
+initData函数用于触发名为INIT_DATA的action。
+sendMessage函数用于触发名为SEND_MESSAGE的action，并将content作为payload传递。
+selectSession函数用于触发名为SELECT_SESSION的action，并将id作为payload传递。
+search函数用于触发名为SET_FILTER_KEY的action，并将value作为payload传递。
+*/
 export default store;
 export const actions = {
-    initData: ({ dispatch }) => dispatch('INIT_DATA'),
+    initData: ({ dispatch }) => dispatch('INIT_DATA'), // initData 是个剪头函数，传参为 dispatch, dispatch()会触发一个 action函数，类型为 INIT_DATA
     sendMessage: ({ dispatch }, content) => dispatch('SEND_MESSAGE', content),
     selectSession: ({ dispatch }, id) => dispatch('SELECT_SESSION', id),
     search: ({ dispatch }, value) => dispatch('SET_FILTER_KEY', value)
